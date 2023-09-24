@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -22,7 +22,11 @@
   
   <link rel="stylesheet" type="text/css" href="../helium/icofont.min.css" />
     <link rel="stylesheet" type="text/css" href="../helium/laika-helium.css" />
+  
   <script src="../helium/laika-helium.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   
   
   <script> /* for avoiding page load transitions */ </script>
@@ -53,7 +57,7 @@
   </div>  
 
 </header>
-
+    
     <nav id="sidebar">
 
   <div class="row">
@@ -74,6 +78,7 @@
     <li class="level2 nav-leaf"><a href="../demo/factorial.html">Factorial</a></li>
     <li class="level2 nav-leaf"><a href="../demo/gamma.html">Gamma</a></li>
     <li class="level2 nav-leaf"><a href="../demo/logs.html">Logarithms</a></li>
+    <li class="level2 nav-leaf"><a href="../demo/poisson.html">Poisson Distribution</a></li>
     <li class="level1 nav-header">design</li>
     <li class="level2 nav-leaf"><a href="../design/design.html">Design Choices</a></li>
     <li class="level1 nav-header">matrix</li>
@@ -119,19 +124,19 @@
 
 </span><span class="keyword">val</span><span> </span><span class="identifier">v_rand</span><span> = </span><span class="type-name">Vec</span><span>.</span><span class="identifier">random</span><span>[</span><span class="number-literal">5</span><span>]()
 </span><span class="comment">// v_rand: Vec[5] = Array(
-//   -0.6227144649567795,
-//   -0.7887328936684803,
-//   -0.8136590648010141,
-//   -0.8317829600436022,
-//   -0.25974944345708384
+//   -0.253888452948726,
+//   -0.3911821114493803,
+//   -0.05965131982336658,
+//   -0.3469005521762164,
+//   -0.24550521241529
 // )
 </span><span class="keyword">val</span><span> </span><span class="identifier">v_rand_max_min</span><span> = </span><span class="type-name">Vec</span><span>.</span><span class="identifier">random</span><span>[</span><span class="number-literal">5</span><span>](</span><span class="number-literal">2.0</span><span>, </span><span class="number-literal">0.5</span><span>)
 </span><span class="comment">// v_rand_max_min: Vec[5] = Array(
-//   1.7706513137737332,
-//   0.6074168095732905,
-//   0.8925410292356122,
-//   1.3251904552133276,
-//   0.5126025899949034
+//   1.1088929613162015,
+//   1.9285666604077218,
+//   0.5887293765745129,
+//   1.6312694755127093,
+//   1.7108283273214173
 // )</span></code></pre>
         <p>And do some stuff</p>
         <pre><code class="nohighlight"><span class="identifier">v</span><span> + </span><span class="identifier">v_fill</span><span>
@@ -142,11 +147,11 @@
 </span><span>
 </span><span class="identifier">v_rand</span><span> -= </span><span class="identifier">v_ones</span><span>
 </span><span class="comment">// res2: Vec[5] = Array(
-//   -0.6227144649567795,
-//   -0.7887328936684803,
-//   -0.8136590648010141,
-//   -0.8317829600436022,
-//   -0.25974944345708384
+//   -0.253888452948726,
+//   -0.3911821114493803,
+//   -0.05965131982336658,
+//   -0.3469005521762164,
+//   -0.24550521241529
 // )
 </span><span>
 </span><span class="comment">// native indexing is fast...
@@ -160,10 +165,10 @@
 </span><span class="comment">// res6: Double = 3.0
 </span><span>
 </span><span class="identifier">v</span><span>.</span><span class="identifier">corr</span><span>(</span><span class="identifier">v_rand</span><span>)
-</span><span class="comment">// res7: Double = 0.44908046812723057
+</span><span class="comment">// res7: Double = 0.07563596707444056
 </span><span>
 </span><span class="identifier">v_rand</span><span>.</span><span class="identifier">elementRanks</span><span>
-</span><span class="comment">// res8: Vec[5] = Array(4.0, 3.0, 2.0, 1.0, 5.0)</span></code></pre>
+</span><span class="comment">// res8: Vec[5] = Array(3.0, 1.0, 5.0, 2.0, 4.0)</span></code></pre>
 
         
 <hr class="footer-rule"/>
